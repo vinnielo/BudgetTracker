@@ -31,8 +31,7 @@ function saveRecord(record) {
   // access your pending object store
   // add record to your store with add method.
 
-  // const transaction = db.transaction(["pending"], "readwrite");
-  // const store = transaction.objectStore("pending");
+
 
   store.add(record);
 } 
@@ -41,8 +40,7 @@ function checkDatabase() {
   // open a transaction on your pending db
   // access your pending object store
   // get all records from store and set to a variable
-  // const transaction = db.transaction(["pending"], "readwrite");
-  // const store = transaction.objectStore("pending");
+
   const getAll = store.getAll();
 
   getAll.onsuccess = function() {
@@ -60,8 +58,7 @@ function checkDatabase() {
           // if successful, open a transaction on your pending db
           // access your pending object store
           // clear all items in your store
-          // const transaction = db.transaction(["pending"], "readwrite");
-          // const store = transaction.objectStore("pending");
+         
           store.clear();
       });
     }
