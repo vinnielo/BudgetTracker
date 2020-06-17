@@ -3,7 +3,7 @@ const logger = require("morgan");
 const mongoose = require("mongoose");
 const compression = require("compression");
 
-const PORT = 3005;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
@@ -15,9 +15,13 @@ app.use(express.json());
 
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/budget", {
+const MONGODB_URI = process.env.MONGODB_URL || "mongodb://localhost/budget"
+
+mongoose.connect(MONGODB_URI, {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useCreateIndex: true,
+  useFindAndModify: false,
+  family: 4 // Use IPv4, skip trying IPv6
 });
 
 // routes
